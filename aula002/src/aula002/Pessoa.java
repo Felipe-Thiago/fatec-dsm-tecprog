@@ -41,6 +41,8 @@ public class Pessoa {
     public void setPai(Pessoa pai){
         this.pai = pai;
     }
+    
+    
     //<<<<<<<<<>>>>>>>>>>
     
     //getters
@@ -73,26 +75,63 @@ public class Pessoa {
         this.idade = idade;
     }
     public Pessoa(String nome, int idade, Pessoa mae){
-        this(nome);
-        this.mae = mae;
+        this(nome, idade);
+        setMaternidade(mae);
     }
     public Pessoa(String nome, int idade, Pessoa mae, Pessoa pai){
         this(nome, idade, mae);
         this.pai = pai;
+        
     }
+    
+    
     //<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>
     
     
     //Demais funções
+    private void setMaternidade(Pessoa mae){
+        this.mae = mae;
+        mae.addFilho(this);
+        
+        //for each, para cada irmao 1 filho incrementado da lista de filhos
+        for (Pessoa irmao : mae.filhos){
+            if (irmao == this){
+                continue;
+            }
+            irmao.addIrmao(this);
+            this.addIrmao(irmao);
+        }
+        
+        //para cada pessoa com a mesma mãe em comum
+        //é adicionado a essa mãe essa pessoa como filho
+        //preciso que, para cada pessoa com a mesma mãe em comum
+        //é adicionado o filho dessa mãe como irmão
+        //ao mesmo tempo que a maternidade é setada, a irmandade também
+    }
+    
+    private void addFilho(Pessoa filho){
+        filhos.add(filho);        
+    }
+    
+    private void addIrmao(Pessoa irmao){
+        irmaos.add(irmao);
+    }
+   
+    
+    
     public String nomeFilhos(){
-        String mensagem = "Os filhos são: ";
+        String mensagem = "Filhos: ";
         int i;
+        if (filhos.size() == 0){
+            mensagem += "-";
+        }
         for(i=0; i<filhos.size(); i++){
             mensagem += filhos.get(i).nome;
             if (i < filhos.size() - 1){
                 mensagem += ", ";
             }
         }
+        
         
         return mensagem;
     }
@@ -105,9 +144,15 @@ public class Pessoa {
     
     
     public String nomeIrmaos(){
-        String mensagem = "Os irmãos são: ";
+        String mensagem = "Irmãos: ";
         int i;
+        if (irmaos.size() == 0){
+            mensagem += "-";
+        }
         for(i=0; i<irmaos.size(); i++){
+            // adicionado para o exercicio <<<<>>>>>
+           
+            // <<<<<<>>>>>>>>
             mensagem += irmaos.get(i).nome;
             if (i < irmaos.size() - 1){
                 mensagem += ", ";
