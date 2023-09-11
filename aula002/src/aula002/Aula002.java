@@ -28,13 +28,23 @@ public class Aula002 {
         arvore[1] = new Pessoa("Leonilda");
         //pais
         arvore[2] = new Pessoa("Marcos", 49);
-        arvore[3] = new Pessoa("Luciane", 50);
+        arvore[3] = new Pessoa("Luciane", 50, arvore[1], arvore[0]);
         //eu
-        arvore[4] = new Pessoa("Felipe", 19, arvore[3]);
-        //irmao
-        arvore[5] = new Pessoa("Junior", 31, arvore[3]);
+        arvore[4] = new Pessoa("Felipe", 19, arvore[3], arvore[2]);
+        //irmaos
+        arvore[5] = new Pessoa("Junior", 31, arvore[3], arvore[2]);
+        arvore[6] = new Pessoa("Ariane", 27, arvore[3], arvore[2]);
+        arvore[7] = new Pessoa("Adriele", 25, arvore[3], arvore[2]);
+        arvore[8] = new Pessoa("Ana Júlia", 18, arvore[3], arvore[2]);
         
-        System.out.println(arvore[4].getNome() + " => Mãe: " + arvore[4].getMae().getNome());
+        
+        System.out.println(arvore[4].getNome() +
+                " => Mãe: " + arvore[4].getMae().getNome() +
+                ", Pai: " + arvore[4].getPai().getNome());
+        System.out.println(arvore[3].getNome() + 
+                " => Mãe: " + arvore[3].getMae().getNome());
+        
+        
     }
     
 }

@@ -41,6 +41,14 @@ public class Pessoa {
     public void setPai(Pessoa pai){
         this.pai = pai;
     }
+    
+    public void setFilho(List<Pessoa> filhos){
+        this.filhos = filhos;
+    }
+    
+    public void setIrmaos(List<Pessoa> irmaos){
+        this.irmaos = irmaos;
+    }
     //<<<<<<<<<>>>>>>>>>>
     
     //getters
@@ -60,6 +68,14 @@ public class Pessoa {
         return this.pai;
     }
     
+    public List<Pessoa> getFilhos(){
+        return this.filhos;
+    }
+    
+    public List<Pessoa> getIrmaos(){
+        return this.irmaos;
+    }
+    
     //<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>
     
     //Construtores
@@ -73,17 +89,28 @@ public class Pessoa {
         this.idade = idade;
     }
     public Pessoa(String nome, int idade, Pessoa mae){
-        this(nome);
+        this(nome, idade);
         this.mae = mae;
+        
     }
     public Pessoa(String nome, int idade, Pessoa mae, Pessoa pai){
         this(nome, idade, mae);
         this.pai = pai;
     }
+    
+    public Pessoa(String nome, int idade, Pessoa mae, Pessoa pai, List<Pessoa> irmaos){
+        this(nome, idade, mae, pai);
+        this.irmaos = irmaos;
+        
+    }
+    
+ 
+    
     //<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>
     
+   
+
     
-    //Demais funções
     public String nomeFilhos(){
         String mensagem = "Os filhos são: ";
         int i;
