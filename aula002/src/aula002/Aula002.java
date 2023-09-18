@@ -27,7 +27,7 @@ public class Aula002 {
         arvore[0] = new Pessoa("Arlindo");
         arvore[1] = new Pessoa("Leonilda");
         //pais
-        arvore[2] = new Pessoa("Marcos", 49);
+        arvore[2] = new Pessoa("Marcos", 49, new Pessoa("Conceição"), new Pessoa(null));
         arvore[3] = new Pessoa("Luciane", 50, arvore[1], arvore[0]);
         //eu
         arvore[4] = new Pessoa("Felipe", 19, arvore[3], arvore[2]);
@@ -37,14 +37,19 @@ public class Aula002 {
         arvore[7] = new Pessoa("Adriele", 25, arvore[3], arvore[2]);
         arvore[8] = new Pessoa("Ana Júlia", 18, arvore[3], arvore[2]);
         
-        
-        System.out.println(arvore[4].getNome() +
-                " => Mãe: " + arvore[4].getMae().getNome() +
-                ", Pai: " + arvore[4].getPai().getNome());
-        System.out.println(arvore[3].getNome() + 
-                " => Mãe: " + arvore[3].getMae().getNome());
-        
-        
+      
+        System.out.println(arvore[4].getNome() + 
+                " \n=> Mãe: " + arvore[4].getMae().getNome() +
+                " \n=> Pai: " + arvore[4].getPai().getNome() +
+                " \n=> " + arvore[4].nomeFilhos() +
+                " \n=> " + arvore[4].nomeIrmaos()
+        );
+        System.out.println(arvore[3].getNome() +
+                " \n=> Mãe: " + arvore[3].getMae().getNome() +
+                " \n=> Pai: " + arvore[3].getPai().getNome() +
+                " \n=> " + arvore[3].nomeFilhos() +
+                " \n=> " + arvore[3].nomeIrmaos()
+        );
     }
     
 }
