@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Aula_1_e_2/src"/>
+	<classpathentry kind="src" path="aula001/src"/>
+	<classpathentry kind="src" path="aula002/src"/>
+	<classpathentry kind="src" path="aula004/aula004/src"/>
+	<classpathentry kind="src" path="aula005.2/src"/>
+	<classpathentry kind="src" path="escola/src/escola"/>
+	<classpathentry kind="src" path="exerOriObj/src"/>
+	<classpathentry excluding="main/java/" kind="src" path="Jogo_Cartas_FelipeThiago/src"/>
+	<classpathentry kind="src" path="Jogo_Cartas_FelipeThiago/src/main/java"/>
+	<classpathentry kind="output" path="Jogo_Cartas_FelipeThiago/target/classes"/>
+</classpath>
