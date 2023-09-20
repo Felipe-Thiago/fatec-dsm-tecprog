@@ -33,7 +33,7 @@ public class Triangulo {
         this.angulo = angulo;
         
         if(angulo <= 0) angulo = 90;
-        if(0 < angulo && angulo < 90){
+        if(angulo > 0 && angulo < 90){
             tipo = TiposTriangulos.TRIANGULO_ACUTANGULO;
         }
         if(angulo > 90){
@@ -62,7 +62,11 @@ public class Triangulo {
       if (tipo.toString().equals("TRIANGULO_RETANGULO")){
           area = (base * altura)/2;
       } else{
-          area = (segmentoAB*segmentoAC*angulo)/2; 
+          altura = segmentoAC*Math.sin(angulo);
+          area = (segmentoAB*altura)/2;
+      }
+      if (area < 0){
+          area = area * (-1);
       }
       return area;
     }
@@ -72,32 +76,30 @@ public class Triangulo {
             segmentoBC = Math.sqrt(Math.pow(base, 2) + Math.pow(altura, 2));
             perimetro = segmentoBC + base + altura;
         } else{
-            double cosseno = Math.toRadians(angulo);
             segmentoBC = Math.sqrt(Math.pow(segmentoAB, 2) + Math.pow(segmentoAC, 2)
-            - 2 * segmentoAB * segmentoAC * cosseno);
+            - 2 * segmentoAB * segmentoAC * Math.cos(angulo));
             perimetro = segmentoBC + segmentoAB + segmentoAC;
         }
-        
         
         return perimetro;
     }
     
     public String getResultadoString(){
         if(tipo.toString().equals("TRIANGULO_RETANGULO")){
-            this.resultMsg = "A área do triângulo retângulo de base " + base +
-                    " e altura " + altura + " é de " + getArea() +
+            this.resultMsg = "A área do triângulo retângulo de \nbase " + base +
+                    " e altura " + altura + " \né de aprox. " + Math.round(getArea()) +
                     " com o perímetro de aprox. " + Math.round(getPerimetro()); 
         } else{
             if(tipo.toString().equals("TRIANGULO_ACUTANGULO")){
-                this.resultMsg = "A área do triângulo acutângulo com lado "
+                this.resultMsg = "A área do triângulo acutângulo com \nlado "
                         + "A = " + segmentoAB + " e lado B = " + segmentoAC
-                        + " e ângulo AB = " + angulo + " é de " + getArea() +
+                        + " e ângulo AB = " + angulo + " \né de aprox. " + Math.round(getArea()) +
                         " com o perímetro de aprox. " + Math.round(getPerimetro());
             }
             if(tipo.toString().equals("TRIANGULO_OBTUSANGULO")){
-                this.resultMsg = "A área do triângulo obtusângulo com lado "
+                this.resultMsg = "A área do triângulo obtusângulo com \nlado "
                         + "A = " + segmentoAB + " e lado B = " + segmentoAC
-                        + " e ângulo AB = " + angulo + " é de " + getArea() +
+                        + " e ângulo AB = " + angulo + " \né de aprox. " + Math.round(getArea()) +
                         " com o perímetro de aprox. " + Math.round(getPerimetro());
             }
         }
