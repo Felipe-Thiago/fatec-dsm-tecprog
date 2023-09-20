@@ -32,6 +32,11 @@ public class ExerOriObj {
         
         System.out.println(quadrado.getMensagem());
         System.out.println(retangulo.getMensagem());
+        
+        Triangulo triangulo = new Triangulo(10, 20, 100);
+        System.out.println(triangulo.getResultadoString());
+        
+        
     }
     
 }

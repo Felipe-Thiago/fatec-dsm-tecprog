@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import java.lang.Math;
+
 /**
  *
  * @author Felipe Thiago
@@ -13,8 +15,9 @@ enum TiposTriangulos{TRIANGULO_RETANGULO, TRIANGULO_OBTUSANGULO, TRIANGULO_ACUTA
 public class Triangulo {
     private double base, altura;
     private double segmentoAB, segmentoAC, angulo;
+    private double area, perimetro, segmentoBC;
     public TiposTriangulos tipo;
-    private String msg;
+    private String msg, resultMsg;
     
     //construtores
     public Triangulo(double base, double altura){
@@ -38,7 +41,7 @@ public class Triangulo {
         }
     }
     
-    public String getMensagem(){
+    /*public String getMensagem(){
         if (tipo.toString().equals("TRIANGULO_RETANGULO")){
             this.msg = "Triângulo RETÂNGULO com " + base + " de base," +
             altura + " de altura e " + angulo + "º de ângulo.";
@@ -53,9 +56,51 @@ public class Triangulo {
         }
         return msg;
     }
+*/
     
-    /*private double getArea(){
-      continuar  
+    public double getArea(){
+      if (tipo.toString().equals("TRIANGULO_RETANGULO")){
+          area = (base * altura)/2;
+      } else{
+          area = (segmentoAB*segmentoAC*angulo)/2; 
+      }
+      return area;
     }
-    */
+    
+    public double getPerimetro(){
+        if (tipo.toString().equals("TRIANGULO_RETANGULO")){
+            segmentoBC = Math.sqrt(Math.pow(base, 2) + Math.pow(altura, 2));
+            perimetro = segmentoBC + base + altura;
+        } else{
+            double cosseno = Math.toRadians(angulo);
+            segmentoBC = Math.sqrt(Math.pow(segmentoAB, 2) + Math.pow(segmentoAC, 2)
+            - 2 * segmentoAB * segmentoAC * cosseno);
+            perimetro = segmentoBC + segmentoAB + segmentoAC;
+        }
+        
+        
+        return perimetro;
+    }
+    
+    public String getResultadoString(){
+        if(tipo.toString().equals("TRIANGULO_RETANGULO")){
+            this.resultMsg = "A área do triângulo retângulo de base " + base +
+                    " e altura " + altura + " é de " + getArea() +
+                    " com o perímetro de aprox. " + Math.round(getPerimetro()); 
+        } else{
+            if(tipo.toString().equals("TRIANGULO_ACUTANGULO")){
+                this.resultMsg = "A área do triângulo acutângulo com lado "
+                        + "A = " + segmentoAB + " e lado B = " + segmentoAC
+                        + " e ângulo AB = " + angulo + " é de " + getArea() +
+                        " com o perímetro de aprox. " + Math.round(getPerimetro());
+            }
+            if(tipo.toString().equals("TRIANGULO_OBTUSANGULO")){
+                this.resultMsg = "A área do triângulo obtusângulo com lado "
+                        + "A = " + segmentoAB + " e lado B = " + segmentoAC
+                        + " e ângulo AB = " + angulo + " é de " + getArea() +
+                        " com o perímetro de aprox. " + Math.round(getPerimetro());
+            }
+        }
+        return resultMsg;
+    }
 }
