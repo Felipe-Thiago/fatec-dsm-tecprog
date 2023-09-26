@@ -64,8 +64,5 @@ public class Baralho {
     Cartas C51 = new Cartas(Naipes.PAUS, NumerosCartas.DAMA, 15);
     Cartas C52 = new Cartas(Naipes.PAUS, NumerosCartas.REI, 16);    
     
-    private List<Cartas> carta = new ArrayList<>();
-    for (i = 0; i < carta.size(); i++){
-        
-    }
+    
 }
