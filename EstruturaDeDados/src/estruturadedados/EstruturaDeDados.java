@@ -1,3 +1,5 @@
+package estruturadedados;
+
 
 import exercicioAula.ExercicioPilha;
 import recursao.Fatorial;
@@ -45,13 +47,24 @@ public class EstruturaDeDados {
         pString.empilhar("C");
         
         while(!pString.pilhaVazia()){
-            System.out.println(pString.desempilhar());
+           System.out.println(pString.desempilhar());
             
         }
         
         System.out.println(ExercicioPilha.palindromo("ana")); //criou uma String palavra
         System.out.println("");
         System.out.println(ExercicioPilha.validaBalanceamento("[({A+B}*C)+F]"));
+        System.out.println("");
+        
+        PilhaInteger pInt = new PilhaInteger();
+        String resp = "Empilhado: ";
+        for (int i = 0; i < 10; i++){
+            pInt.empilhar((int) Math.round(Math.random() * 10));
+            resp += pInt.exibirTopo() + " ";
+        }
+        System.out.println(resp);
+        pInt = ExercicioPilha.ordenaPilhaInt(pInt);
+        System.out.println(ExercicioPilha.ordenaPilhaInt(pInt));
     }
     
 }
