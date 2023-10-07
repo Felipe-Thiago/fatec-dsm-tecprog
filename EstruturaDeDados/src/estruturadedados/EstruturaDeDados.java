@@ -41,6 +41,7 @@ public class EstruturaDeDados {
         }
         */
         
+        /*
         PilhaString pString = new PilhaString();
         pString.empilhar("A");
         pString.empilhar("B");
@@ -65,6 +66,34 @@ public class EstruturaDeDados {
         System.out.println(resp);
         pInt = ExercicioPilha.ordenaPilhaInt(pInt);
         System.out.println(ExercicioPilha.ordenaPilhaInt(pInt));
+        */
+        
+        /*
+        filas.Fila filaPessoa = new filas.Fila();
+        
+        filaPessoa.adicionar("Maria");
+        filaPessoa.adicionar("Pedro");
+        filaPessoa.adicionar("João");
+        filaPessoa.adicionar("Alice");
+        
+        for(int i = filaPessoa.tamanho(); i > 0; i--){
+            System.out.println("Remover: " + filaPessoa.remover().toString());
+        }
+        */
+        
+        filas.FilaPrioridade filaNumeros = new filas.FilaPrioridade();
+        
+        filaNumeros.adicionar(10);
+        filaNumeros.adicionar(5);
+        filaNumeros.adicionar(0);
+        filaNumeros.adicionar(6);
+        filaNumeros.adicionar(65);
+        filaNumeros.adicionar(1);
+        filaNumeros.adicionar(1);
+        
+        for (int i = filaNumeros.tamanho(); i > 0; i--){
+            System.out.println("Remover: " + filaNumeros.remover().toString());
+        }
     }
     
 }
