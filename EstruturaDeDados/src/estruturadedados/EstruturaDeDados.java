@@ -1,10 +1,10 @@
 package estruturadedados;
 
 
-import exercicioAula.ExercicioPilha;
-import recursao.Fatorial;
-import exercicioAula.PilhaInteger;
-import exercicioAula.PilhaString;
+import exercicioAula.*;
+import recursao.*;
+import exercicioAula.*;
+import listaNos.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -81,6 +81,11 @@ public class EstruturaDeDados {
         }
         */
         
+        
+        
+        
+        /*
+        
         filas.FilaPrioridade filaNumeros = new filas.FilaPrioridade();
         
         filaNumeros.adicionar(10);
@@ -94,6 +99,9 @@ public class EstruturaDeDados {
         for (int i = filaNumeros.tamanho(); i > 0; i--){
             System.out.println("Remover: " + filaNumeros.remover().toString());
         }
+        */
+        
+        listaNos.TesteLista.adicionarLista();
     }
     
 }
