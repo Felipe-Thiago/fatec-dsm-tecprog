@@ -27,6 +27,9 @@ public class TesteLista {
         System.out.println(lista.exibirLista());
         */
         
+        
+        //exercício 1 a) ----------------------
+        //criando duas listas "1" - crescente e "2" - decrescente
         lista.adicionar(0, TipoOrdenacao.CRESCENTE);
         lista.adicionar(1, TipoOrdenacao.CRESCENTE);
         lista.adicionar(5, TipoOrdenacao.CRESCENTE);
@@ -42,11 +45,41 @@ public class TesteLista {
         lista2.adicionar(7, TipoOrdenacao.DECRESCENTE);
         lista2.adicionar(11, TipoOrdenacao.DECRESCENTE);
         
+        //exibindo as duas listas ordenadas
+        System.out.println("1ª" + lista.exibirLista());
+        System.out.println("2ª" + lista2.exibirLista());
+        System.out.println();
+        //fim exercicio a) ---------------------
         
-        System.out.println(lista.exibirLista());
-        System.out.println(lista2.exibirLista());
+
+        //exercicio b) -------------------------
+        //exibindo a posição do item 5 da lista 1
+        System.out.println(lista.getListaPos(5));
+        //fim exercicio b) ---------------------
         
-        System.out.println(lista.getListaPos(9));
-        //retorno = 3
+        
+        //exercicio c) -------------------------
+        //removendo a mesma posição do item 5 da lista 1
+        lista.removerPos(5);
+        System.out.println(lista.getListaPos(5)); 
+        System.out.println();
+        //agora removido, a posição retornada é -1
+        //fim exercicio c) ---------------------
+        
+        
+        //exercicio d) -------------------------
+        //concatenando a lista 2 na lista 1
+        lista.concatenar(lista2);
+        System.out.println("Concatenação da" + lista.exibirLista());
+        //fim exercicio d) ---------------------
+        
+        //exercicio e) -------------------------
+        //observando o hash de objeto de cada lista
+        System.out.println(lista);
+        listaNos.ListaLigada copia = new ListaLigada();
+        copia.copiar(lista);
+        System.out.println(copia);
+        //sendo códigos diferentes e portanto únicos, exibir o conteúdo da lista cópia
+        System.out.println("Cópia da" + copia.exibirLista());
     }
 }

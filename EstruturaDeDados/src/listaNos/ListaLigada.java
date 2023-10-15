@@ -103,7 +103,6 @@ public class ListaLigada {
     }
     
     
-    
     public void remover(int indice){
         No aux = percorrerLista(indice - 1);
         if (indice == 0){
@@ -125,14 +124,12 @@ public class ListaLigada {
     
     
     //exercícios
-    /* a) deverá receber valores numéricos e adicionar os valores
-     * à lista ligada de forma ordenada (crescente ou decrescente),
-     * dependendo do tipo de ordenação escolhido. Utilize o conceito de
-     * enum para escolher o tipo de ordenação.
-    */
-    
     public void adicionar(int valor, TipoOrdenacao tipo){
-        
+        /* a) deverá receber valores numéricos e adicionar os valores
+        * à lista ligada de forma ordenada (crescente ou decrescente),
+        * dependendo do tipo de ordenação escolhido. Utilize o conceito de
+        * enum para escolher o tipo de ordenação.
+        */
         if (tipo == TipoOrdenacao.CRESCENTE){
             
             if (qtdNo == 0){
@@ -171,47 +168,56 @@ public class ListaLigada {
                 }
             }
         }
-            
     }
     
-    /* b) Deverá receber um objeto, pesquisar na lista, retornando
-     * o índice do objeto na lista ou -1 se o objeto não existir na lista
-    */
     
     public int getListaPos(Object item){
-        int aux = -1;
+        /* b) Deverá receber um objeto, pesquisar na lista, retornando
+        * o índice do objeto na lista ou -1 se o objeto não existir na lista
+        */
+        int aux2 = -1;
         for (int i = 0; i < qtdNo; i++){
-            if (item == percorrerLista(i).getInfo()){
-                aux = i;
+            if (item.toString().equals(getLista(i))){
+                aux2 = i;
+            } 
+        }
+        return aux2;
+    }
+    
+    
+    public boolean removerPos(Object item){
+        /* c) deverá receber um objeto e removê-lo da lista retornando True,
+        * se o objeto não existir retorne falso.
+        */
+        for (int i = 0; i < qtdNo; i++){
+            if (item.toString().equals(getLista(i))){
+                remover(i);
+                return true;
             }
         }
-        return aux;
+        return false;
     }
     
-    /* c) deverá receber um objeto e removê-lo da lista retornando True,
-     * se o objeto não existir retorne falso.
-     *
-    */
-    public boolean remover(Object item){
-        for (int i = 0; i < qtdNo; i++){
-            if (item == getLista(i)){
-                
-            }
-        }
-        
+    
+    public void concatenar(ListaLigada lista2){
+        /* d) Deverá concatenar uma lista2 recebendo como parâmetro o final da lista atual
+        */
+        ultimoNo.setProximo(lista2.primeiroNo);
     }
     
-    /* d) Deverá concatenar uma lista2 recebendo como parâmetro o final da lista atual
-    */
-    public void concatenar(ListaLigada lista){
-        
-    }
     
-    /* e) deverá criar uma cópia da lista atual na memória,
-     * retornando à referência da lista copiada
-    */
     
     public ListaLigada copiar(ListaLigada lista){
+        /* e) deverá criar uma cópia da lista atual na memória,
+        * retornando à referência da lista copiada
+        */
+        adicionarNo(lista.primeiroNo.getInfo());
+        int aux = 1;
+        while(lista.qtdNo != qtdNo){
+            adicionarNo(lista.getLista(aux), aux);
+            aux++;
+        }
         
+        return lista;
     }
 }
