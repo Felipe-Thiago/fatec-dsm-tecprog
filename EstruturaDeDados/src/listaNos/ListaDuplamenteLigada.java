@@ -27,9 +27,9 @@ public class ListaDuplamenteLigada {
             primeiroNo = ultimoNo = novoNo;
             qtdNo++;
         } else{
-            novoNo = new NoDuplo(info, null, null);
-            ultimoNo.setProximo(novoNo);
-            //ultimoNo.setAnterior(???);
+            novoNo = new NoDuplo(info, null, ultimoNo);
+            ultimoNo.setProximo(novoNo);     // ||
+            //ultimoNo.setAnterior(???); ---> é definido no construtor
             ultimoNo = novoNo;
             qtdNo++;
         }
@@ -48,24 +48,34 @@ public class ListaDuplamenteLigada {
             } else{
                 NoDuplo aux = percorrerLista(indice-1);
                 
-                novoNo = new NoDuplo(info, aux.getProxNo(), aux.getAntNo());
+                novoNo = new NoDuplo(info, aux.getProxNo(), aux);
                 
+                aux.getProxNo().setAnterior(novoNo);
                 aux.setProximo(novoNo);
-                //aux.setAnterior(????);
+                
                 qtdNo++;
             }
         }
     }
     
     private NoDuplo percorrerLista(int indice){
-        if(indice >= 0 && indice < qtdNo){
+        
+        //adicionar o recurso para percorrer somente metade da lista
+        // if (indice >0 && indice < qtdNo/2{
+        // else if(indice > 0 && indice > qtdNo/2{
+        if(indice >= 0 && indice <= qtdNo){
             NoDuplo aux=primeiroNo;
             for (int i = 0; i < indice; i++){
                 aux = aux.getProxNo();
             
             }
             return aux;
-        } else{
+        } /*else if(indice >= 0 && indice > qtdNo/2){
+            NoDuplo aux = primeiroNo;
+            for (int i= indice; i >= indice; i--){
+                aux = aux.getAntNo();
+            }
+        } */else{
             return null;
         }
         
@@ -75,19 +85,21 @@ public class ListaDuplamenteLigada {
         NoDuplo aux = percorrerLista(indice - 1);
         if (indice == 0){
             // remove da primeira posicao da lista
+            
             primeiroNo = primeiroNo.getProxNo();
+            primeiroNo.setAnterior(null);
             qtdNo--;
         } else if (indice == qtdNo - 1){
             // remove da ultima posicao da lista
             aux = percorrerLista(indice-1);
             aux.setProximo(null);
-            aux.setAnterior(null); // <--------------------
+            ultimoNo = aux;
             qtdNo--;
         } else{
             // remove de qualquer posicao da lista
             aux = percorrerLista(indice-1);
             aux.setProximo(aux.getProxNo().getProxNo());
-            aux.setAnterior(aux.getAntNo().getAntNo()); // <--------------------
+            aux.getProxNo().setAnterior(aux); // <--------------------
             qtdNo--;
         }
     }

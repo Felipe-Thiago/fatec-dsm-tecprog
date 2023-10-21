@@ -81,5 +81,8 @@ public class TesteLista {
         System.out.println(copia);
         //sendo códigos diferentes e portanto únicos, exibir o conteúdo da lista cópia
         System.out.println("Cópia da" + copia.exibirLista());
+        
+        
+        ListaDuplamenteLigada ListaDupla = new ListaDuplamenteLigada();
     }
 }
