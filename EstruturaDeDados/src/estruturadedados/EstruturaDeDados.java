@@ -101,7 +101,8 @@ public class EstruturaDeDados {
         }
         */
         
-        listaNos.TesteLista.adicionarLista();
+        //listaNos.TesteLista.adicionarLista();
+        arvoreBinaria.TesteArvore.criarArvore();
     }
     
 }
